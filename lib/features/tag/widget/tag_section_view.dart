@@ -8,10 +8,12 @@ class TagSectionView extends StatelessWidget {
     super.key,
     required this.sectionName,
     required this.tags,
+    required this.onPressed,
   });
 
   final String sectionName;
   final List<Tag> tags;
+  final Function(Tag) onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +40,7 @@ class TagSectionView extends StatelessWidget {
                 for (final tag in tags)
                   PressableTagView(
                     tag: tag,
-                    onPressed: (tag) {},
+                    onPressed: onPressed,
                   ),
               ],
             ),

@@ -1,9 +1,13 @@
 import 'package:clocker/features/tag/model/tag.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-class Clock {
-  final int timestamp;
-  final DateTime createAt;
-  final List<Tag> tags;
+part 'clock.freezed.dart';
 
-  Clock({required this.timestamp, required this.createAt, required this.tags});
+@freezed
+class Clock with _$Clock {
+  factory Clock({
+    required int timestamp,
+    required DateTime createAt,
+    required List<Tag> tags,
+  }) = _Clock;
 }

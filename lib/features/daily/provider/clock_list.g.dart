@@ -6,7 +6,7 @@ part of 'clock_list.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$clockListHash() => r'a30835bfb6045a1e3ecdf4cab334538ad6f31482';
+String _$clockListHash() => r'160cf8f78d5f5c495dc591725d1fb8fbb88a280d';
 
 /// See also [ClockList].
 @ProviderFor(ClockList)

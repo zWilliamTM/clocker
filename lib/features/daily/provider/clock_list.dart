@@ -15,8 +15,6 @@ class ClockList extends _$ClockList {
         createAt: DateTime.now(),
         tags: [
           Tag(name: 'dev', color: Colors.green),
-          Tag(name: 'stuff', color: Colors.red),
-          Tag(name: 'random', color: Colors.blue),
         ],
       )
     ];
