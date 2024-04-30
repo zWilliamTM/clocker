@@ -56,7 +56,7 @@ class _Content extends ConsumerWidget {
   Function(Tag) _onPressedAddTag(WidgetRef ref, Clock clock) {
     return (Tag tag) {
       ref.read(clockListProvider.notifier).updateClock(
-            clock.copyWith(tags: [...clock.tags, tag]),
+            clock.copyWith(tags: {...clock.tags, tag}.toList()),
           );
     };
   }
