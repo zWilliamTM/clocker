@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:clocker/config/colors.dart';
 import 'package:clocker/config/constants.dart';
 import 'package:clocker/features/daily/model/clock.dart';
 import 'package:clocker/features/daily/provider/clock_list.dart';
@@ -152,7 +153,7 @@ class _Background extends StatelessWidget {
       height: 450,
       padding: const EdgeInsets.all(kPadding),
       decoration: const BoxDecoration(
-        color: Colors.white,
+        color: kPrimary,
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(kRadius),
           topRight: Radius.circular(kRadius),

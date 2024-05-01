@@ -1,3 +1,4 @@
+import 'package:clocker/config/colors.dart';
 import 'package:clocker/config/constants.dart';
 import 'package:clocker/features/daily/page/clocker_main_page.dart';
 import 'package:desktop_window/desktop_window.dart';
@@ -24,8 +25,7 @@ class MyApp extends ConsumerWidget {
       title: 'Clocker',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-            seedColor: const Color.fromARGB(255, 0, 191, 255)),
+        colorScheme: ColorScheme.fromSeed(seedColor: kPrimary),
         useMaterial3: true,
       ),
       home: const ClockerMainPage(),
