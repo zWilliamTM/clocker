@@ -1,3 +1,4 @@
+import 'package:clocker/config/constants.dart';
 import 'package:clocker/features/daily/page/clocker_main_page.dart';
 import 'package:desktop_window/desktop_window.dart';
 import 'package:flutter/material.dart';
@@ -6,9 +7,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  await DesktopWindow.setWindowSize(const Size(600, 600));
-  await DesktopWindow.setMinWindowSize(const Size(600, 600));
-  await DesktopWindow.setMaxWindowSize(const Size(600, 600));
+  await DesktopWindow.setWindowSize(const Size(kWindowWidth, kWindowHeight));
+  await DesktopWindow.setMinWindowSize(const Size(kWindowWidth, kWindowHeight));
+  await DesktopWindow.setMaxWindowSize(const Size(kWindowWidth, kWindowHeight));
   await DesktopWindow.setFullScreen(false);
 
   runApp(const ProviderScope(child: MyApp()));

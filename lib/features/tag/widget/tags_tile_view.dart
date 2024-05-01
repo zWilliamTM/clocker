@@ -1,5 +1,7 @@
+import 'package:clocker/config/constants.dart';
 import 'package:clocker/features/tag/model/tag.dart';
 import 'package:clocker/features/tag/widget/tag_view.dart';
+import 'package:clocker/utils/color_extension.dart';
 import 'package:flutter/material.dart';
 
 class TagsTileView extends StatelessWidget {
@@ -15,8 +17,8 @@ class TagsTileView extends StatelessWidget {
     return Container(
       width: 150,
       decoration: BoxDecoration(
-        color: Colors.black.withOpacity(0.2),
-        borderRadius: BorderRadius.circular(10),
+        color: Colors.black.defaultOpacity,
+        borderRadius: BorderRadius.circular(kRadius),
       ),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 5),

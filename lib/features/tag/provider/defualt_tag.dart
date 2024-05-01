@@ -14,4 +14,9 @@ class DefaultTag extends _$DefaultTag {
       Tag(name: 'random', color: Colors.blue),
     ];
   }
+
+  Future<void> addTag(Tag tag) async {
+    final previousState = await future;
+    state = AsyncData([tag, ...previousState]);
+  }
 }

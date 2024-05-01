@@ -1,3 +1,6 @@
+import 'dart:math';
+
+import 'package:clocker/config/constants.dart';
 import 'package:clocker/features/daily/model/clock.dart';
 import 'package:clocker/features/daily/provider/clock_list.dart';
 import 'package:clocker/features/tag/model/tag.dart';
@@ -37,8 +40,10 @@ class _Content extends ConsumerWidget {
 
     return Column(
       children: [
-        const _Form(),
-        const SizedBox(height: 20),
+        _Input(
+          onAppend: _onAppendText(ref),
+        ),
+        const SizedBox(height: kPadding),
         TagSectionView(
           sectionName: 'Selected',
           tags: currentTags,
@@ -51,6 +56,16 @@ class _Content extends ConsumerWidget {
         )
       ],
     );
+  }
+
+  Function(String) _onAppendText(WidgetRef ref) {
+    return (String tagName) {
+      if (tagName.isNotEmpty) {
+        ref
+            .read(defaultTagProvider.notifier)
+            .addTag(Tag(name: tagName, color: getRandomColor()));
+      }
+    };
   }
 
   Function(Tag) _onPressedAddTag(WidgetRef ref, Clock clock) {
@@ -72,14 +87,16 @@ class _Content extends ConsumerWidget {
   }
 }
 
-class _Form extends StatefulWidget {
-  const _Form({super.key});
+class _Input extends StatefulWidget {
+  const _Input({super.key, required this.onAppend});
+
+  final Function(String) onAppend;
 
   @override
-  State<_Form> createState() => __FormState();
+  State<_Input> createState() => __InputState();
 }
 
-class __FormState extends State<_Form> {
+class __InputState extends State<_Input> {
   late TextEditingController _controller;
 
   @override
@@ -96,14 +113,27 @@ class __FormState extends State<_Form> {
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
-      controller: _controller,
-      onSubmitted: (value) {
-        print('Submitted: $value');
-      },
-      decoration: const InputDecoration(
-        hintText: 'Add a tag',
-      ),
+    return Row(
+      children: [
+        Expanded(
+          child: TextField(
+            controller: _controller,
+            onSubmitted: (value) {
+              print('Submitted: $value');
+            },
+            decoration: const InputDecoration(
+              hintText: 'Tag name',
+            ),
+          ),
+        ),
+        ElevatedButton(
+          onPressed: () {
+            widget.onAppend(_controller.text.trim());
+            _controller.clear();
+          },
+          child: const Text('Add'),
+        ),
+      ],
     );
   }
 }
@@ -120,12 +150,12 @@ class _Background extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 450,
-      padding: const EdgeInsets.all(30),
+      padding: const EdgeInsets.all(kPadding),
       decoration: const BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(20),
-          topRight: Radius.circular(20),
+          topLeft: Radius.circular(kRadius),
+          topRight: Radius.circular(kRadius),
         ),
       ),
       child: Center(
@@ -133,4 +163,14 @@ class _Background extends StatelessWidget {
       ),
     );
   }
+}
+
+Color getRandomColor() {
+  final random = Random();
+  return Color.fromRGBO(
+    random.nextInt(256), // Red
+    random.nextInt(256), // Green
+    random.nextInt(256), // Blue
+    1, // Alpha
+  );
 }

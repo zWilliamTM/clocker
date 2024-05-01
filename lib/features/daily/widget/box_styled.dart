@@ -1,3 +1,5 @@
+import 'package:clocker/config/constants.dart';
+import 'package:clocker/utils/color_extension.dart';
 import 'package:flutter/material.dart';
 
 class BoxStyled extends StatelessWidget {
@@ -15,14 +17,14 @@ class BoxStyled extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(20.0),
+      padding: const EdgeInsets.all(kPadding),
       margin: EdgeInsets.symmetric(
         vertical: vPadding,
         horizontal: hPadding,
       ),
       decoration: BoxDecoration(
-        color: Colors.black.withOpacity(0.1),
-        borderRadius: BorderRadius.circular(30),
+        color: Colors.black.defaultOpacity,
+        borderRadius: BorderRadius.circular(kRadius),
       ),
       child: child,
     );

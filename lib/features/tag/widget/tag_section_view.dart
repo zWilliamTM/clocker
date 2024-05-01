@@ -1,3 +1,4 @@
+import 'package:clocker/config/constants.dart';
 import 'package:clocker/features/daily/widget/box_styled.dart';
 import 'package:clocker/features/tag/model/tag.dart';
 import 'package:clocker/features/tag/widget/tag_view.dart';
@@ -35,7 +36,7 @@ class TagSectionView extends StatelessWidget {
           child: SizedBox(
             width: double.infinity,
             child: Wrap(
-              spacing: 10,
+              spacing: kPadding,
               children: [
                 for (final tag in tags)
                   PressableTagView(
