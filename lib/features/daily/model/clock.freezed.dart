@@ -14,12 +14,19 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
+Clock _$ClockFromJson(Map<String, dynamic> json) {
+  return _Clock.fromJson(json);
+}
+
 /// @nodoc
 mixin _$Clock {
   int get timestamp => throw _privateConstructorUsedError;
+  @DateTimeConverter()
   DateTime get createAt => throw _privateConstructorUsedError;
+  @TagListConverter()
   List<Tag> get tags => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $ClockCopyWith<Clock> get copyWith => throw _privateConstructorUsedError;
 }
@@ -29,7 +36,10 @@ abstract class $ClockCopyWith<$Res> {
   factory $ClockCopyWith(Clock value, $Res Function(Clock) then) =
       _$ClockCopyWithImpl<$Res, Clock>;
   @useResult
-  $Res call({int timestamp, DateTime createAt, List<Tag> tags});
+  $Res call(
+      {int timestamp,
+      @DateTimeConverter() DateTime createAt,
+      @TagListConverter() List<Tag> tags});
 }
 
 /// @nodoc
@@ -73,7 +83,10 @@ abstract class _$$ClockImplCopyWith<$Res> implements $ClockCopyWith<$Res> {
       __$$ClockImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int timestamp, DateTime createAt, List<Tag> tags});
+  $Res call(
+      {int timestamp,
+      @DateTimeConverter() DateTime createAt,
+      @TagListConverter() List<Tag> tags});
 }
 
 /// @nodoc
@@ -109,20 +122,25 @@ class __$$ClockImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$ClockImpl implements _Clock {
   _$ClockImpl(
       {required this.timestamp,
-      required this.createAt,
-      required final List<Tag> tags})
+      @DateTimeConverter() required this.createAt,
+      @TagListConverter() required final List<Tag> tags})
       : _tags = tags;
+
+  factory _$ClockImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ClockImplFromJson(json);
 
   @override
   final int timestamp;
   @override
+  @DateTimeConverter()
   final DateTime createAt;
   final List<Tag> _tags;
   @override
+  @TagListConverter()
   List<Tag> get tags {
     if (_tags is EqualUnmodifiableListView) return _tags;
     // ignore: implicit_dynamic_type
@@ -146,6 +164,7 @@ class _$ClockImpl implements _Clock {
             const DeepCollectionEquality().equals(other._tags, _tags));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, timestamp, createAt,
       const DeepCollectionEquality().hash(_tags));
@@ -155,19 +174,30 @@ class _$ClockImpl implements _Clock {
   @pragma('vm:prefer-inline')
   _$$ClockImplCopyWith<_$ClockImpl> get copyWith =>
       __$$ClockImplCopyWithImpl<_$ClockImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$ClockImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class _Clock implements Clock {
   factory _Clock(
       {required final int timestamp,
-      required final DateTime createAt,
-      required final List<Tag> tags}) = _$ClockImpl;
+      @DateTimeConverter() required final DateTime createAt,
+      @TagListConverter() required final List<Tag> tags}) = _$ClockImpl;
+
+  factory _Clock.fromJson(Map<String, dynamic> json) = _$ClockImpl.fromJson;
 
   @override
   int get timestamp;
   @override
+  @DateTimeConverter()
   DateTime get createAt;
   @override
+  @TagListConverter()
   List<Tag> get tags;
   @override
   @JsonKey(ignore: true)

@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:clocker/config/colors.dart';
 import 'package:clocker/config/constants.dart';
 import 'package:clocker/features/daily/model/clock.dart';
-import 'package:clocker/features/daily/provider/clock_list.dart';
+import 'package:clocker/features/daily/provider/clocks.dart';
 import 'package:clocker/features/tag/model/tag.dart';
 import 'package:clocker/features/tag/provider/tags.dart';
 import 'package:clocker/features/tag/widget/tag_section_view.dart';
@@ -32,7 +32,7 @@ class _Content extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final defaultTag = ref.watch(tagsProvider).asData?.value ?? [];
-    final clockList = ref.watch(clockListProvider).asData?.value ?? [];
+    final clockList = ref.watch(clocksProvider).asData?.value ?? [];
     final clockIndex =
         clockList.indexWhere((c) => c.createAt == clock.createAt);
 
@@ -71,7 +71,7 @@ class _Content extends ConsumerWidget {
 
   Function(Tag) _onPressedAddTag(WidgetRef ref, Clock clock) {
     return (Tag tag) {
-      ref.read(clockListProvider.notifier).updateClock(
+      ref.read(clocksProvider.notifier).updateClock(
             clock.copyWith(tags: {...clock.tags, tag}.toList()),
           );
     };
@@ -79,7 +79,7 @@ class _Content extends ConsumerWidget {
 
   Function(Tag) _onPressedRemoveTag(WidgetRef ref, Clock clock) {
     return (Tag tag) {
-      ref.read(clockListProvider.notifier).updateClock(
+      ref.read(clocksProvider.notifier).updateClock(
             clock.copyWith(
               tags: clock.tags.where((t) => t.name != tag.name).toList(),
             ),

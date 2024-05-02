@@ -4,14 +4,14 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'hive_storage.g.dart';
 
 enum BoxField {
-  daily,
+  clocks,
   tags,
 }
 
 @Riverpod(keepAlive: true)
 Future<Box> Function(BoxField) hiveStorage(HiveStorageRef ref) {
   var boxes = {
-    BoxField.daily: () => Hive.openBox(BoxField.daily.toString()),
+    BoxField.clocks: () => Hive.openBox(BoxField.clocks.toString()),
     BoxField.tags: () => Hive.openBox(BoxField.tags.toString()),
   };
   return (BoxField boxName) async {

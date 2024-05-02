@@ -52,7 +52,7 @@ class _ClockControllState extends State<ClockControll> {
     return BoxStyled(
       child: Column(
         children: [
-          Text(formatDuration(counter), style: const TextStyle(fontSize: 60)),
+          _Time(counter: counter),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
@@ -62,6 +62,35 @@ class _ClockControllState extends State<ClockControll> {
           ),
         ],
       ),
+    );
+  }
+}
+
+class _Time extends StatelessWidget {
+  const _Time({
+    super.key,
+    required this.counter,
+  });
+
+  final int counter;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: formatDuration(counter).split('').map((letter) {
+        return SizedBox(
+          width: 50,
+          child: Center(
+            child: Text(
+              letter,
+              style: const TextStyle(
+                fontSize: 60,
+              ),
+            ),
+          ),
+        );
+      }).toList(),
     );
   }
 }

@@ -1,5 +1,5 @@
 import 'package:clocker/features/daily/model/clock.dart';
-import 'package:clocker/features/daily/provider/clock_list.dart';
+import 'package:clocker/features/daily/provider/clocks.dart';
 import 'package:clocker/features/daily/widget/clock_controll.dart';
 import 'package:clocker/features/daily/widget/clock_list_view.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +10,7 @@ class ClockerMainPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final clockList = ref.watch(clockListProvider).asData?.value ?? [];
+    final clockList = ref.watch(clocksProvider).asData?.value ?? [];
 
     return Scaffold(
       body: Container(
@@ -37,7 +37,7 @@ class ClockerMainPage extends ConsumerWidget {
 
   Function(int) _onStop(WidgetRef ref) {
     return (int timestamp) {
-      ref.read(clockListProvider.notifier).addClock(
+      ref.read(clocksProvider.notifier).addClock(
             Clock(
               timestamp: timestamp,
               createAt: DateTime.now(),

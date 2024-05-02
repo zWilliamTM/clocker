@@ -1,5 +1,5 @@
 import 'package:clocker/features/daily/model/clock.dart';
-import 'package:clocker/features/daily/provider/clock_list.dart';
+import 'package:clocker/features/daily/provider/clocks.dart';
 import 'package:clocker/features/daily/utils/formats.dart';
 import 'package:clocker/features/daily/widget/box_styled.dart';
 import 'package:clocker/features/tag/view/show_tag_bottomsheet.dart';
@@ -33,7 +33,7 @@ class ClockListView extends ConsumerWidget {
                   IconButton(
                     icon: const Icon(Icons.delete),
                     onPressed: () {
-                      ref.read(clockListProvider.notifier).removeClock(clock);
+                      ref.read(clocksProvider.notifier).removeClock(clock);
                     },
                   ),
                 ],
