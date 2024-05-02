@@ -1,5 +1,5 @@
 import 'package:clocker/config/constants.dart';
-import 'package:clocker/features/daily/widget/box_styled.dart';
+import 'package:clocker/features/clocks/widget/box_styled.dart';
 import 'package:clocker/features/tag/model/tag.dart';
 import 'package:clocker/features/tag/widget/tag_view.dart';
 import 'package:flutter/material.dart';

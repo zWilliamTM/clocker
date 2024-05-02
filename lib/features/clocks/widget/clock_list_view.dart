@@ -1,7 +1,7 @@
-import 'package:clocker/features/daily/model/clock.dart';
-import 'package:clocker/features/daily/provider/clocks.dart';
-import 'package:clocker/features/daily/utils/formats.dart';
-import 'package:clocker/features/daily/widget/box_styled.dart';
+import 'package:clocker/features/clocks/model/clock.dart';
+import 'package:clocker/features/clocks/provider/clocks.dart';
+import 'package:clocker/features/clocks/utils/formats.dart';
+import 'package:clocker/features/clocks/widget/box_styled.dart';
 import 'package:clocker/features/tag/view/show_tag_bottomsheet.dart';
 import 'package:clocker/features/tag/widget/tags_tile_view.dart';
 import 'package:flutter/material.dart';

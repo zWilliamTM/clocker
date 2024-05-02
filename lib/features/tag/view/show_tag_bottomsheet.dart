@@ -2,8 +2,8 @@ import 'dart:math';
 
 import 'package:clocker/config/colors.dart';
 import 'package:clocker/config/constants.dart';
-import 'package:clocker/features/daily/model/clock.dart';
-import 'package:clocker/features/daily/provider/clocks.dart';
+import 'package:clocker/features/clocks/model/clock.dart';
+import 'package:clocker/features/clocks/provider/clocks.dart';
 import 'package:clocker/features/tag/model/tag.dart';
 import 'package:clocker/features/tag/provider/tags.dart';
 import 'package:clocker/features/tag/widget/tag_section_view.dart';

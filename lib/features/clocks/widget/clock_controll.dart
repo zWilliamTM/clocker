@@ -1,6 +1,6 @@
 import 'dart:async';
-import 'package:clocker/features/daily/utils/formats.dart';
-import 'package:clocker/features/daily/widget/box_styled.dart';
+import 'package:clocker/features/clocks/utils/formats.dart';
+import 'package:clocker/features/clocks/widget/box_styled.dart';
 import 'package:flutter/material.dart';
 
 class ClockControll extends StatefulWidget {

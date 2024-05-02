@@ -1,6 +1,6 @@
 import 'package:clocker/config/colors.dart';
 import 'package:clocker/config/constants.dart';
-import 'package:clocker/features/daily/page/clocker_main_page.dart';
+import 'package:clocker/features/clocks/page/clocker_main_page.dart';
 import 'package:desktop_window/desktop_window.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

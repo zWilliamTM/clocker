@@ -1,4 +1,4 @@
-import 'package:clocker/features/daily/model/clock.dart';
+import 'package:clocker/features/clocks/model/clock.dart';
 import 'package:clocker/storage/hive_storage.dart';
 import 'package:clocker/storage/persistent_data_interface.dart';
 import 'package:hive_flutter/hive_flutter.dart';
