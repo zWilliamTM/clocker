@@ -1,4 +1,5 @@
 import 'package:clocker/storage/hive_storage.dart';
+import 'package:clocker/storage/persistent_data_interface.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -7,18 +8,19 @@ import '../model/tag.dart';
 part 'tags.g.dart';
 
 @Riverpod(keepAlive: true)
-class Tags extends _$Tags {
+class Tags extends _$Tags implements IPersistentData<List<Tag>> {
   late Box _box;
   bool _isInitialized = false;
 
   @override
   Future<List<Tag>> build() async {
-    List<Tag> data = state is AsyncData ? (state as AsyncData).value : [];
     if (!_isInitialized) {
       _box = await ref.read(hiveStorageProvider)(BoxField.tags);
       _isInitialized = true;
-      data = await loadData();
+      await loadData();
     }
+
+    List<Tag> data = state.asData?.value ?? [];
 
     return data;
   }
@@ -30,12 +32,14 @@ class Tags extends _$Tags {
     saveData(newState);
   }
 
-  Future<List<Tag>> loadData({String? key}) async {
-    List data = _box.get('0') ?? [];
-    final result = data.map((e) => Tag.fromJson(e)).toList();
-    return result;
+  @override
+  Future<void> loadData({String? key}) async {
+    final data = _box.get('0') ?? [];
+    final result = (data as List).map((e) => Tag.fromJson(e)).toList();
+    state = AsyncData(result);
   }
 
+  @override
   void saveData(List<Tag> value, {String? key}) async {
     await _box.put('0', value.map((e) => e.toJson()).toList());
   }

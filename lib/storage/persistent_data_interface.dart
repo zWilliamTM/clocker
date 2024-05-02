@@ -1,4 +1,4 @@
-abstract class IPersistentData {
-  void saveData<T>(T value, {String? key});
-  Future<T> loadData<T>({String? key});
+abstract class IPersistentData<T> {
+  void saveData(T value, {String? key});
+  Future<void> loadData({String? key});
 }
