@@ -1,5 +1,3 @@
-// TODO: Tags current daily
-
 import 'package:clocker/config/constants.dart';
 import 'package:clocker/features/clocks/widget/clock_list_view.dart';
 import 'package:clocker/features/tag/model/tag.dart';
@@ -29,7 +27,6 @@ class TagsTrackingPage extends ConsumerWidget {
             Padding(
               padding: const EdgeInsets.all(kPadding),
               child: TagSectionView(
-                sectionName: 'Tag',
                 tags: tags,
                 onPressed: (Tag tag) {
                   ref.read(byTagProvider.notifier).selectTag(tag);

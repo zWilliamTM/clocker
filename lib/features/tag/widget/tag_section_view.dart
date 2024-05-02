@@ -7,9 +7,9 @@ import 'package:flutter/material.dart';
 class TagSectionView extends StatelessWidget {
   const TagSectionView({
     super.key,
-    required this.sectionName,
     required this.tags,
     required this.onPressed,
+    this.sectionName = '',
   });
 
   final String sectionName;
@@ -22,14 +22,15 @@ class TagSectionView extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          sectionName,
-          style: const TextStyle(
-            fontSize: 16,
-            color: Colors.black45,
-            fontWeight: FontWeight.bold,
+        if (sectionName.isNotEmpty)
+          Text(
+            sectionName,
+            style: const TextStyle(
+              fontSize: 16,
+              color: Colors.black45,
+              fontWeight: FontWeight.bold,
+            ),
           ),
-        ),
         BoxStyled(
           hPadding: 0,
           vPadding: 0,
