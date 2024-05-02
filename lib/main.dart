@@ -4,6 +4,7 @@ import 'package:clocker/features/daily/page/clocker_main_page.dart';
 import 'package:desktop_window/desktop_window.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -12,6 +13,8 @@ Future<void> main() async {
   await DesktopWindow.setMinWindowSize(const Size(kWindowWidth, kWindowHeight));
   await DesktopWindow.setMaxWindowSize(const Size(kWindowWidth, kWindowHeight));
   await DesktopWindow.setFullScreen(false);
+
+  await Hive.initFlutter();
 
   runApp(const ProviderScope(child: MyApp()));
 }

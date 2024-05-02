@@ -5,7 +5,7 @@ import 'package:clocker/config/constants.dart';
 import 'package:clocker/features/daily/model/clock.dart';
 import 'package:clocker/features/daily/provider/clock_list.dart';
 import 'package:clocker/features/tag/model/tag.dart';
-import 'package:clocker/features/tag/provider/defualt_tag.dart';
+import 'package:clocker/features/tag/provider/tags.dart';
 import 'package:clocker/features/tag/widget/tag_section_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -31,7 +31,7 @@ class _Content extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final defaultTag = ref.watch(defaultTagProvider).asData?.value ?? [];
+    final defaultTag = ref.watch(tagsProvider).asData?.value ?? [];
     final clockList = ref.watch(clockListProvider).asData?.value ?? [];
     final clockIndex =
         clockList.indexWhere((c) => c.createAt == clock.createAt);
@@ -63,7 +63,7 @@ class _Content extends ConsumerWidget {
     return (String tagName) {
       if (tagName.isNotEmpty) {
         ref
-            .read(defaultTagProvider.notifier)
+            .read(tagsProvider.notifier)
             .addTag(Tag(name: tagName, color: getRandomColor()));
       }
     };

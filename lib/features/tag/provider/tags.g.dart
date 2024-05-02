@@ -1,25 +1,24 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'defualt_tag.dart';
+part of 'tags.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$defaultTagHash() => r'a650b2b2b81025048cd3d76ac99a5c75862913de';
+String _$tagsHash() => r'747fe14ce8339e541da6a7504fb92197f3bdd25e';
 
-/// See also [DefaultTag].
-@ProviderFor(DefaultTag)
-final defaultTagProvider =
-    AutoDisposeAsyncNotifierProvider<DefaultTag, List<Tag>>.internal(
-  DefaultTag.new,
-  name: r'defaultTagProvider',
+/// See also [Tags].
+@ProviderFor(Tags)
+final tagsProvider = AsyncNotifierProvider<Tags, List<Tag>>.internal(
+  Tags.new,
+  name: r'tagsProvider',
   debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$defaultTagHash,
+      const bool.fromEnvironment('dart.vm.product') ? null : _$tagsHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$DefaultTag = AutoDisposeAsyncNotifier<List<Tag>>;
+typedef _$Tags = AsyncNotifier<List<Tag>>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
