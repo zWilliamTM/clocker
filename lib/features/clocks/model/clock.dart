@@ -31,11 +31,15 @@ class Clock with _$Clock {
     required int timestamp,
     @DateTimeConverter() required DateTime createAt,
     @TagListConverter() required List<Tag> tags,
+    String? title,
+    String? description,
   }) = _Clock;
 
   factory Clock.fromJson(Map json) => Clock(
         timestamp: json['timestamp'] as int,
         createAt: DateTime.parse(json['createAt'] as String),
         tags: (json['tags'] as List).map((e) => Tag.fromJson(e)).toList(),
+        title: json['title'] as String? ?? '',
+        description: json['description'] as String? ?? '',
       );
 }

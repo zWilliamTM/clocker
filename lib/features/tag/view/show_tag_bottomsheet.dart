@@ -15,6 +15,7 @@ Function() showTagBottomSheet(
   return () {
     showModalBottomSheet(
       context: context,
+      isScrollControlled: true,
       builder: (context) {
         return _Background(
           child: _Content(clock: clock),
@@ -150,7 +151,7 @@ class _Background extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 450,
+      height: kWindowHeight * 0.7,
       padding: const EdgeInsets.all(kPadding),
       decoration: const BoxDecoration(
         color: kPrimary,

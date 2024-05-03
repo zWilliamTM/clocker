@@ -25,6 +25,8 @@ mixin _$Clock {
   DateTime get createAt => throw _privateConstructorUsedError;
   @TagListConverter()
   List<Tag> get tags => throw _privateConstructorUsedError;
+  String? get title => throw _privateConstructorUsedError;
+  String? get description => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -39,7 +41,9 @@ abstract class $ClockCopyWith<$Res> {
   $Res call(
       {int timestamp,
       @DateTimeConverter() DateTime createAt,
-      @TagListConverter() List<Tag> tags});
+      @TagListConverter() List<Tag> tags,
+      String? title,
+      String? description});
 }
 
 /// @nodoc
@@ -58,6 +62,8 @@ class _$ClockCopyWithImpl<$Res, $Val extends Clock>
     Object? timestamp = null,
     Object? createAt = null,
     Object? tags = null,
+    Object? title = freezed,
+    Object? description = freezed,
   }) {
     return _then(_value.copyWith(
       timestamp: null == timestamp
@@ -72,6 +78,14 @@ class _$ClockCopyWithImpl<$Res, $Val extends Clock>
           ? _value.tags
           : tags // ignore: cast_nullable_to_non_nullable
               as List<Tag>,
+      title: freezed == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String?,
+      description: freezed == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -86,7 +100,9 @@ abstract class _$$ClockImplCopyWith<$Res> implements $ClockCopyWith<$Res> {
   $Res call(
       {int timestamp,
       @DateTimeConverter() DateTime createAt,
-      @TagListConverter() List<Tag> tags});
+      @TagListConverter() List<Tag> tags,
+      String? title,
+      String? description});
 }
 
 /// @nodoc
@@ -103,6 +119,8 @@ class __$$ClockImplCopyWithImpl<$Res>
     Object? timestamp = null,
     Object? createAt = null,
     Object? tags = null,
+    Object? title = freezed,
+    Object? description = freezed,
   }) {
     return _then(_$ClockImpl(
       timestamp: null == timestamp
@@ -117,6 +135,14 @@ class __$$ClockImplCopyWithImpl<$Res>
           ? _value._tags
           : tags // ignore: cast_nullable_to_non_nullable
               as List<Tag>,
+      title: freezed == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String?,
+      description: freezed == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -127,7 +153,9 @@ class _$ClockImpl implements _Clock {
   _$ClockImpl(
       {required this.timestamp,
       @DateTimeConverter() required this.createAt,
-      @TagListConverter() required final List<Tag> tags})
+      @TagListConverter() required final List<Tag> tags,
+      this.title,
+      this.description})
       : _tags = tags;
 
   factory _$ClockImpl.fromJson(Map<String, dynamic> json) =>
@@ -148,8 +176,13 @@ class _$ClockImpl implements _Clock {
   }
 
   @override
+  final String? title;
+  @override
+  final String? description;
+
+  @override
   String toString() {
-    return 'Clock(timestamp: $timestamp, createAt: $createAt, tags: $tags)';
+    return 'Clock(timestamp: $timestamp, createAt: $createAt, tags: $tags, title: $title, description: $description)';
   }
 
   @override
@@ -161,13 +194,16 @@ class _$ClockImpl implements _Clock {
                 other.timestamp == timestamp) &&
             (identical(other.createAt, createAt) ||
                 other.createAt == createAt) &&
-            const DeepCollectionEquality().equals(other._tags, _tags));
+            const DeepCollectionEquality().equals(other._tags, _tags) &&
+            (identical(other.title, title) || other.title == title) &&
+            (identical(other.description, description) ||
+                other.description == description));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, timestamp, createAt,
-      const DeepCollectionEquality().hash(_tags));
+      const DeepCollectionEquality().hash(_tags), title, description);
 
   @JsonKey(ignore: true)
   @override
@@ -187,7 +223,9 @@ abstract class _Clock implements Clock {
   factory _Clock(
       {required final int timestamp,
       @DateTimeConverter() required final DateTime createAt,
-      @TagListConverter() required final List<Tag> tags}) = _$ClockImpl;
+      @TagListConverter() required final List<Tag> tags,
+      final String? title,
+      final String? description}) = _$ClockImpl;
 
   factory _Clock.fromJson(Map<String, dynamic> json) = _$ClockImpl.fromJson;
 
@@ -199,6 +237,10 @@ abstract class _Clock implements Clock {
   @override
   @TagListConverter()
   List<Tag> get tags;
+  @override
+  String? get title;
+  @override
+  String? get description;
   @override
   @JsonKey(ignore: true)
   _$$ClockImplCopyWith<_$ClockImpl> get copyWith =>

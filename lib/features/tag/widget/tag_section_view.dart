@@ -1,7 +1,7 @@
 import 'package:clocker/config/constants.dart';
-import 'package:clocker/features/clocks/widget/box_styled.dart';
 import 'package:clocker/features/tag/model/tag.dart';
 import 'package:clocker/features/tag/widget/tag_view.dart';
+import 'package:clocker/widgets/section_view.dart';
 import 'package:flutter/material.dart';
 
 class TagSectionView extends StatelessWidget {
@@ -31,21 +31,16 @@ class TagSectionView extends StatelessWidget {
               fontWeight: FontWeight.bold,
             ),
           ),
-        BoxStyled(
-          hPadding: 0,
-          vPadding: 0,
-          child: SizedBox(
-            width: double.infinity,
-            child: Wrap(
-              spacing: kPadding,
-              children: [
-                for (final tag in tags)
-                  PressableTagView(
-                    tag: tag,
-                    onPressed: onPressed,
-                  ),
-              ],
-            ),
+        SectionView(
+          child: Wrap(
+            spacing: kPadding,
+            children: [
+              for (final tag in tags)
+                PressableTagView(
+                  tag: tag,
+                  onPressed: onPressed,
+                ),
+            ],
           ),
         ),
       ],
